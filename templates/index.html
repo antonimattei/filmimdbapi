@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMDb Movie Search</title>
+</head>
+<body>
+    <h1>IMDb Movie Search</h1>
+    <form action="/" method="get">
+        <label for="title">Movie Title:</label>
+        <input type="text" id="title" name="title" required>
+        <button type="submit">Search</button>
+    </form>
+
+    {% if movies %}
+        <h2>Search Results</h2>
+        <ul>
+            {% for movie in movies %}
+                <li><a href="/movie/{{ movie.getID() }}">{{ movie['title'] }} ({{ movie.get('year') }})</a></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+</body>
+</html>

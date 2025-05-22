@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% if movie %}
+        <title>{{ movie.get('title', 'Movie Details') }} - IMDb Movie Search</title>
+    {% else %}
+        <title>Movie Details - IMDb Movie Search</title>
+    {% endif %}
+    <style>
+        body {
+            font-family: sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        img {
+            max-width: 300px;
+            height: auto;
+            float: left;
+            margin-right: 20px;
+            margin-bottom: 20px;
+        }
+        .clear {
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+    {% if movie %}
+        <h1>{{ movie.get('title', 'No Title Available') }}</h1>
+
+        {% if movie.get('cover') %}
+            <img src="{{ movie.get('cover') }}" alt="{{ movie.get('title', 'Movie Cover') }}">
+        {% endif %}
+
+        <p><strong>Year:</strong> {{ movie.get('year', 'N/A') }}</p>
+
+        {% if movie.get('directors') %}
+            <p><strong>Director(s):</strong>
+                {% for director in movie.get('directors') %}
+                    {{ director }} {% if not loop.last %}, {% endif %}
+                {% endfor %}
+            </p>
+        {% endif %}
+
+        {% if movie.get('cast') %}
+            <p><strong>Cast:</strong>
+                {% for actor in movie.get('cast') %}
+                    {{ actor }} {% if not loop.last %}, {% endif %}
+                {% endfor %}
+            </p>
+        {% endif %}
+
+        {% if movie.get('plot summary') %}
+            <p><strong>Plot Summary:</strong> {{ movie.get('plot summary')[0] if movie.get('plot summary')|length > 0 else 'N/A' }}</p>
+        {% endif %}
+
+        <div class="clear"></div>
+
+        <p><a href="/">Back to Search</a></p>
+
+    {% else %}
+        <p>Movie details could not be loaded.</p>
+        <p><a href="/">Back to Search</a></p>
+    {% endif %}
+</body>
+</html>
