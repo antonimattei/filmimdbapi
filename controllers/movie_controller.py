@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request
-from models.movie_model import search_movies
+from models.movie_model import search_movies, get_movie_by_id  # Adicione esta importação
 
 movie_bp = Blueprint('movie_bp', __name__)
 
@@ -17,3 +17,11 @@ def index():
             search_title=title
         )
     return render_template('index.html', movies=[], search_title=None)
+
+# Adicione esta nova rota
+@movie_bp.route('/movie/<movie_id>')
+def movie_details(movie_id):
+    movie = get_movie_by_id(movie_id)
+    if not movie:
+        return render_template('404.html'), 404
+    return render_template('movie_details.html', movie=movie)
