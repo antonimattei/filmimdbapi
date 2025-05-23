@@ -32,13 +32,64 @@
                     <ul class="list-group list-group-flush">
                         {% for movie in movies %}
                             <li class="list-group-item bg-transparent border-0 px-0">
-                                <a href="/movie/{{ movie.getID() }}">
-                                    {{ movie['title'] }} <span class="text-secondary">({{ movie.get('year') }})</span>
+                                <a href="/movie/{{ movie.id }}">
+                                    {{ movie.title }}
+                                    <span class="text-secondary">
+                                        ({{ movie.year or 'N/A' }})
+                                        {% if movie.rating %} - ⭐ {{ movie.rating }}{% endif %}
+                                    </span>
                                 </a>
                             </li>
                         {% endfor %}
                     </ul>
                 </div>
+            </div>
+        {% endif %}
+        {% if pagination and pagination.total_pages > 1 %}
+    <div class="pagination">
+        <!-- Primeira página -->
+        {% if pagination.first and pagination.current_page != pagination.first %}
+            <a href="?title={{ search_title }}&page={{ pagination.first }}">Fist</a>
+        {% endif %}
+
+        <!-- Página anterior -->
+        {% if pagination.previous %}
+            <a href="?title={{ search_title }}&page={{ pagination.previous }}">Previous</a>
+        {% endif %}
+
+        <!-- Gap antes -->
+        {% if pagination.has_gap_before %}
+            <span class="gap">...</span>
+        {% endif %}
+
+        <!-- Páginas numeradas -->
+        {% for page_num in pagination.pages %}
+            {% if page_num == pagination.current_page %}
+                <span class="current">{{ page_num }}</span>
+            {% else %}
+                <a href="?title={{ search_title }}&page={{ page_num }}">{{ page_num }}</a>
+            {% endif %}
+        {% endfor %}
+
+        <!-- Gap depois -->
+        {% if pagination.has_gap_after %}
+            <span class="gap">...</span>
+        {% endif %}
+
+        <!-- Próxima página -->
+        {% if pagination.next %}
+            <a href="?title={{ search_title }}&page={{ pagination.next }}">Next</a>
+        {% endif %}
+
+        <!-- Última página -->
+        {% if pagination.last and pagination.current_page != pagination.last %}
+            <a href="?title={{ search_title }}&page={{ pagination.last }}">Last</a>
+        {% endif %}
+    </div>
+    {% endif %}
+        {% if error %}
+            <div class="alert alert-danger mt-4">
+                {{ error }}
             </div>
         {% endif %}
     </div>

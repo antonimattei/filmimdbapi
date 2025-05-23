@@ -3,6 +3,47 @@ body {
     color: #fff;
     min-height: 100vh;
 }
+body {
+    font-family: sans-serif;
+    line-height: 1.6;
+    margin: 20px;
+}
+img {
+    max-width: 300px;
+    height: auto;
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+.clear {
+    clear: both;
+}
+.pagination {
+    margin: 20px 0;
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+.pagination a, .pagination span {
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    text-decoration: none;
+}
+
+.pagination a:hover {
+    background-color: #f0f0f0;
+}
+
+.pagination .current {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+.pagination .gap {
+    padding: 5px;
+}
 .imdb-header {
     background-color: #121212;
     color: #f5c518;
