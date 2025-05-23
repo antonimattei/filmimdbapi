@@ -83,3 +83,22 @@ def generate_pagination_links(current_page, total_pages):
         pagination['last'] = total_pages
 
     return pagination
+def get_movie_by_id(movie_id):
+    """Obtém detalhes completos de um filme pelo ID"""
+    try:
+        movie = ia.get_movie(movie_id)
+        ia.update(movie, info=['main', 'vote details'])
+        
+        return {
+            'id': movie.movieID,
+            'title': movie.get('title', 'N/A'),
+            'year': movie.get('year', 'N/A'),
+            'rating': movie.get('rating', 'Not rated'),
+            'genres': ', '.join(movie.get('genres', [])),
+            'directors': ', '.join([d['name'] for d in movie.get('directors', [])]),
+            'plot': movie.get('plot outline', 'No plot available'),
+            'cover_url': movie.get('cover url')
+        }
+    except Exception as e:
+        print(f"Error fetching movie {movie_id}: {e}")
+        return None

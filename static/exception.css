@@ -1,0 +1,66 @@
+/* static/css/exception.css */
+
+/* Cores IMDb */
+:root {
+    --imdb-black: #000000;
+    --imdb-gold: #F5C518;
+    --imdb-light-gold: #F8DE7E;
+    --imdb-dark-gold: #D4AF37;
+}
+
+/* Layout Base */
+.exception-body {
+    background-color: #181818;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.exception-container {
+    background-color:  #181818;
+    border-radius: 10px;
+    border: 2px solid var(--imdb-gold);
+    padding: 2rem;
+}
+
+/* Elementos Específicos */
+.exception-icon {
+    font-size: 5rem;
+    color: var(--imdb-gold);
+    animation: icon-shake 0.5s infinite alternate;
+}
+
+.exception-title {
+    color: var(--imdb-gold);
+    font-weight: bold;
+}
+
+.exception-btn {
+    background-color: var(--imdb-gold);
+    color: var(--imdb-black);
+    font-weight: bold;
+    border: none;
+}
+
+.exception-btn:hover {
+    background-color: var(--imdb-dark-gold);
+    color: var(--imdb-black);
+}
+
+/* Animações */
+@keyframes icon-shake {
+    0% { transform: rotate(-5deg); }
+    100% { transform: rotate(5deg); }
+}
+
+/* Rodapé IMDb */
+.exception-footer {
+    border-top: 1px solid #333;
+    padding-top: 1rem;
+    margin-top: 2rem;
+}
+
+.exception-logo {
+    width: 100px;
+    margin-bottom: 0.5rem;
+}
