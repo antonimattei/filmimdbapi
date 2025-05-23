@@ -74,8 +74,12 @@ filmimdbapi/
 
    > Se não existir um arquivo `requirements.txt`, crie um com:
    > ```
-   > Flask
-   > IMDbPY
+   >pip
+   >autopep8
+   >Flask==3.0.3
+   >requests
+   >Werkzeug==3.0.6
+   >imdbpy
    > ```
 
 ---
