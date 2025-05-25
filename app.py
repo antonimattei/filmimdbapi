@@ -5,7 +5,7 @@ import os
 app = Flask(__name__)
 
 # Registre o Blueprint (roteamento de filmes)
-app.register_blueprint(movie_bp, url_prefix='/movies')  # Ex: /movies/list
+app.register_blueprint(movie_bp, url_prefix='/')  # Ex: /movies/list
 
 @app.route("/")
 def home():
