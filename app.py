@@ -1,5 +1,5 @@
-from flask import Flask, redirect, url_for
-from controllers.movie_controller import movie_bp
+from flask import Flask
+from controllers.movie_controller import movie_bp  # Importe o Blueprint
 import os
 
 app = Flask(__name__)
@@ -9,7 +9,7 @@ app.register_blueprint(movie_bp, url_prefix='/movies')  # Ex: /movies/list
 
 @app.route("/")
 def home():
-    return redirect(url_for('movie_bp.index'))
+    return "Página inicial do site!"
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 1000)), debug=False)
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)), debug=False)
