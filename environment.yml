@@ -1,0 +1,8 @@
+name: filmimdbapi
+channels:
+  - defaults
+dependencies:
+  - python=3.10
+  - flask
+  - pytest
+  - flake8
