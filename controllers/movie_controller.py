@@ -10,9 +10,12 @@ def index():
     
     if title:
         result = search_movies(title, page=page)
+        movies = result["movies"]
+        if not movies:
+            return render_template('404.html'), 404
         return render_template(
             'index.html',
-            movies=result["movies"],
+            movies=movies,
             pagination=result["pagination"],
             search_title=title
         )
