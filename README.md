@@ -86,14 +86,9 @@ filmimdbapi/
 
 ## ▶️ Como Usar
 
-1. **Execute o servidor Flask:**
-   ```bash
-   python app.py
+1. **Acesse no navegador:**
    ```
-
-2. **Acesse no navegador:**
-   ```
-   http://127.0.0.1:5000/
+   https://filmimdbapi.onrender.com
    ```
 
 3. **Pesquise por um filme e veja os resultados!**
